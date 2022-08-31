@@ -9,13 +9,13 @@ namespace PBancoMorangao
     internal class Pessoa
     {
         String Nome, Telefone;
-        Endereco Endereco; 
-    public Pessoa(string Nome, string Telefone, Endereco endereco)
-    {
+        Endereco Endereco;
+        public Pessoa(string Nome, string Telefone, Endereco endereco)
+        {
             this.Nome = Nome;
             this.Telefone = Telefone;
             this.Endereco = endereco;
-    }
+        }
 
 
 
@@ -35,10 +35,16 @@ namespace PBancoMorangao
 
         }
 
-
-        public void ImprimirPessoa()
+        public string getNome()
         {
-            Console.WriteLine("\nNome: " + Nome + "\n Telefone: " + Telefone + "\nEndereço: " + Endereco);
+            return this.Nome;
+        }
+
+
+
+        public string ImprimirPessoa()
+        {
+           return "\nNome: " + Nome + "\nTelefone: " + Telefone + Endereco;
         }
 
 

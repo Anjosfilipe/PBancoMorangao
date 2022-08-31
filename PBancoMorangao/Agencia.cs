@@ -8,10 +8,27 @@ namespace PBancoMorangao
 {
     internal class Agencia
     {
-        int IdAgencia;
+        int IdAgencia = 0;
         String Nome;
         Endereco Endereco;
         Funcionario funcionario;
         Cliente cliente;
+
+        public Agencia(string nome, Endereco endereco)
+        {
+           
+            this.Nome = nome;   
+            this.Endereco = endereco;    
+          
+        }
+        public void setIdAgencia()
+        {
+            IdAgencia++;
+        }
+
+
+
+
+
     }
 }

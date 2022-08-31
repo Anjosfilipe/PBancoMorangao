@@ -13,11 +13,26 @@ namespace PBancoMorangao
         float Salario;
 
 
-        public Funcionario(int Idfuncionario, Agencia agencia, float salario, string Nome, string Telefone, Endereco endereco) : base(Nome, Telefone, endereco)
+        public Funcionario(Agencia agencia, float salario, string Nome, string Telefone, Endereco endereco) : base(Nome, Telefone, endereco)
         {
-            IdFuncionario = Idfuncionario;
+            
             Agencia = agencia;
             Salario = salario;
+        }
+
+        public void setIdFuncionario()
+        {
+            IdFuncionario++;    
+        }
+
+        public void setAgencia()
+        {
+              
+        }
+
+        public override string ToString()
+        {
+            return base.ImprimirPessoa()+"\nId: "+IdFuncionario+"\nAgencia: "+Agencia+"\nSalario: "+Salario;
         }
     }
 
