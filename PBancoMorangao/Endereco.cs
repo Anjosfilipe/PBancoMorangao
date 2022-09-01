@@ -9,7 +9,7 @@ namespace PBancoMorangao
     internal class Endereco
     {
         String Cep, Logradouro, Numero, Cidade, Estado, Bairro;
-        
+
 
         public Endereco(string cep, string logradouro, string numero, string cidade, string estado, string bairro)
         {
@@ -29,7 +29,7 @@ namespace PBancoMorangao
         {
             this.Logradouro = logradouro;
         }
-        public void setNumero(string numero )
+        public void setNumero(string numero)
         {
             this.Numero = numero;
         }
@@ -48,7 +48,7 @@ namespace PBancoMorangao
 
         public override string ToString()
         {
-            return "\nEstado: "+Estado+"\nCidade: "+Cidade+ "\nBairro: "+Bairro+"\nCep: "+Cep+"\nLogradouro: "+Logradouro+"\nNumero: "+Numero;
+            return "\nEstado: " + Estado + "\nCidade: " + Cidade + "\nBairro: " + Bairro + "\nCep: " + Cep + "\nLogradouro: " + Logradouro + "\nNumero: " + Numero;
         }
     }
 }
