@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace PBancoMorangao
 {
-    internal class PessoaJuridica : Cliente
+    internal class PessoaJuridica : Pessoa
     {
         String Cnpj, RazaoSocial, NomeFantasia;
 
-        public PessoaJuridica(string cnpj, string razaoSocial, string nomeFantasia, float salario, string Nome, string Telefone, Endereco endereco) : base(salario, Nome, Telefone, endereco)
+        public PessoaJuridica(string cnpj, string razaoSocial, string nomeFantasia, float salario, string Nome, string Telefone, Endereco endereco) : base( Nome, Telefone, salario, endereco)
         {
             Cnpj = cnpj;
             RazaoSocial = razaoSocial;

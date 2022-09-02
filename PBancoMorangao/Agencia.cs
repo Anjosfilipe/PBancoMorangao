@@ -12,7 +12,7 @@ namespace PBancoMorangao
         String Nome;
         Endereco Endereco;
         Funcionario funcionario;
-        Cliente cliente;
+        Pessoa Pessoa;
 
         public Agencia(string nome, Endereco endereco)
         {

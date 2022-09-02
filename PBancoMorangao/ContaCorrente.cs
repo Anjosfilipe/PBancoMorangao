@@ -12,7 +12,7 @@ namespace PBancoMorangao
         String Titular, Senha, TipoConta;
         float Limite, Saldo;
         Agencia Agencia;
-        Cliente Cliente;
+        Pessoa Pessoa;
         PessoaFisica PessoaFisica;
         PessoaJuridica PessoaJuridica;
 
@@ -49,7 +49,7 @@ namespace PBancoMorangao
             this.TipoConta = TipoConta;
             this.Limite = limite;
             this.Saldo = Saldo;
-           
+
 
         }
 
@@ -88,9 +88,9 @@ namespace PBancoMorangao
             this.Agencia = agencia;
         }
 
-        public void setCliente(Cliente cliente)
+        public void setCliente(Pessoa pessoa)
         {
-            this.Cliente = cliente;
+            this.Pessoa= pessoa;
         }
 
         public void setPessoaFisica(PessoaFisica pessoaf)
@@ -100,7 +100,7 @@ namespace PBancoMorangao
 
         public String ImprimirContaCorrente()
         {
-            return "\nId conta: " + this.IdConta + "\nTipo da conta: " + this.TipoConta + "\nCliente: " + this.Cliente;
+            return "\nId conta: " + this.IdConta + "\nTipo da conta: " + this.TipoConta + "\nCliente: " + this.Pessoa;
         }
 
     }

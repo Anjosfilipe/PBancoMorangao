@@ -12,7 +12,7 @@ namespace PBancoMorangao
         DateTime DataNascimento;
 
 
-        public PessoaFisica(string sexo, string cpf, DateTime dataNascimento, string Nome, string Telefone, Endereco endereco) : base(Nome, Telefone, endereco)
+        public PessoaFisica(string sexo, string cpf, DateTime dataNascimento, string Nome, string Telefone,float salario, Endereco endereco) : base(Nome, Telefone,salario, endereco)
         {
             Cpf = cpf;
             DataNascimento = dataNascimento;

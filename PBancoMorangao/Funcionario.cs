@@ -13,7 +13,7 @@ namespace PBancoMorangao
         float Salario;
 
 
-        public Funcionario(Agencia agencia, float salario, string Nome, string Telefone, Endereco endereco) : base(Nome, Telefone, endereco)
+        public Funcionario(Agencia agencia, float salario, string Nome, string Telefone, Endereco endereco) : base(Nome, Telefone,salario, endereco)
         {
 
             Agencia = agencia;
