@@ -13,10 +13,11 @@ namespace PBancoMorangao
         float Limite, Saldo;
         Agencia Agencia;
         Pessoa Pessoa;
+        long NumeroConta;
         PessoaFisica PessoaFisica;
         PessoaJuridica PessoaJuridica;
 
-        public ContaCorrente(String titular, String Senha, String TipoConta, float limite, float Saldo, PessoaFisica pessoaf)
+        public ContaCorrente(String titular,long NumeroConta, String Senha, String TipoConta, float limite, float Saldo, PessoaFisica pessoaf)
         {
 
             this.Titular = titular;
@@ -28,7 +29,7 @@ namespace PBancoMorangao
             
 
         }
-        public ContaCorrente(String titular, String Senha, String TipoConta, float limite, float Saldo, PessoaJuridica pessoaj)
+        public ContaCorrente(String titular, long NumeroConta, String Senha, String TipoConta, float limite, float Saldo, PessoaJuridica pessoaj)
         {
 
             this.Titular = titular;
@@ -41,7 +42,7 @@ namespace PBancoMorangao
 
         }
 
-        public ContaCorrente(String titular, String Senha, String TipoConta, float limite, float Saldo)
+        public ContaCorrente(String titular, long NumeroConta, String Senha, String TipoConta, float limite, float Saldo)
         {
 
             this.Titular = titular;
@@ -98,9 +99,14 @@ namespace PBancoMorangao
             this.PessoaFisica = pessoaf;
         }
 
+        public void setNumeroConta(long NumeroConta)
+        {
+            this.NumeroConta = NumeroConta;
+        }
+
         public String ImprimirContaCorrente()
         {
-            return "\nId conta: " + this.IdConta + "\nTipo da conta: " + this.TipoConta + "\nCliente: " + this.Pessoa;
+            return  "\nTipo da conta: " + this.TipoConta + "\nNumero da conta: " + this.NumeroConta + "\nSenha: "+this.Senha +"\nCliente: " + this.PessoaFisica;
         }
 
     }

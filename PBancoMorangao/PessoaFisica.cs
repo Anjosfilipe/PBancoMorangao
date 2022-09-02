@@ -41,10 +41,16 @@ namespace PBancoMorangao
         public int AbrirConta()
         {
             Console.Clear();
-            Console.WriteLine("Olá " + getNome());
-            Console.WriteLine("Deseja abrir uma conta em nosso banco? ");
-            Console.WriteLine("Digite -- 1 -- para SIM ");
-            Console.WriteLine("Digite -- 2 -- para NÂO ");
+            Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                     Olá " + getNome() +"                                  $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$           Deseja  realmente abrir uma conta em nosso banco ?    $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                 Digite -- 1 -- para SIM                         $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                 Digite -- 2 -- para NÂO                         $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+            Console.SetCursorPosition(70, 20);
             int opc = int.Parse(Console.ReadLine());
 
             return opc;
@@ -64,7 +70,7 @@ namespace PBancoMorangao
         }
         public string ImprimirPessoaFisica()
         {
-            return base.ImprimirPessoa() + "\nCpf: " + Cpf + "\nData Nascimento: " + DataNascimento + "\nSexo: " + Sexo+"Tipo de Conta: "+TipoConta;
+            return base.ImprimirPessoa() + "\nCpf: " + Cpf + "\nData Nascimento: " + DataNascimento + "\nSexo: " + Sexo+"\nTipo de Conta: "+TipoConta;
         }
 
 

@@ -7,17 +7,17 @@ namespace PBancoMorangao
     {
         static Endereco ColetaDadosEndereco()
         {
-            Console.WriteLine("Digite o CEP atual: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite o CEP atual: ");
             String cep = Console.ReadLine();
-            Console.WriteLine("Digite o Estado que reside atualmente: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite o Estado que reside atualmente: ");
             String estado = Console.ReadLine();
-            Console.WriteLine("Digite a Cidade que reside atualmente: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite a Cidade que reside atualmente: ");
             String cidade = Console.ReadLine();
-            Console.WriteLine("Digite o Bairro que reside atualmente: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite o Bairro que reside atualmente: ");
             String bairro = Console.ReadLine();
-            Console.WriteLine("Digite o Logradouro atual: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite o Logradouro atual: ");
             String logradouro = Console.ReadLine();
-            Console.WriteLine("Digite o numero da residencia atual: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite o numero da residencia atual: ");
             String numero = Console.ReadLine();
 
             return new Endereco(cep, logradouro, numero, cidade, estado, bairro);
@@ -25,19 +25,19 @@ namespace PBancoMorangao
         }
         static PessoaFisica ColetarDadosPF()
         {
-            Console.WriteLine("Para podemos criar sua conta em nosso banco.Necessitamos de seus dados pessoais para uma PROPOSTA DE APROVAÇÃO!");
-            Console.WriteLine("Nome: ");
+            Console.WriteLine("\n\n\n\n\t\t\t\t\t\t\t  --- Para podemos criar sua CONTA em nosso banco. Necessitamos de seus DADOS PESSOAIS para uma PROPOSTA DE APROVAÇÃO!");
+            Console.Write("\n\t\t\t\t\t\t\tNome: ");
             String nome = Console.ReadLine();
-            Console.WriteLine("Digite o numero de seu Cpf: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite o numero de seu Cpf: ");
             String Cpf = Console.ReadLine();
-            Console.WriteLine("Digite a Data de Nascimento: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite a Data de Nascimento: ");
             DateTime datanascimento = DateTime.Parse(Console.ReadLine());
             Endereco endereco = ColetaDadosEndereco();
-            Console.WriteLine("Digite seu numero de Telefone: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite seu numero de Telefone: ");
             String Telefone = Console.ReadLine();
-            Console.WriteLine("Digite o valor de seu salario: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite o valor de seu salario: ");
             float salario = float.Parse(Console.ReadLine());
-            Console.WriteLine("Digite seu Sexo: ");
+            Console.Write("\n\t\t\t\t\t\t\tDigite seu Sexo: ");
             String sexo = Console.ReadLine();
 
             return new PessoaFisica(sexo, Cpf, datanascimento, nome, Telefone, salario, endereco);
@@ -78,10 +78,12 @@ namespace PBancoMorangao
 
         }
 
-        static ContaCorrente ColetarDadosConta(PessoaFisica pessoaf)
+        static ContaCorrente ColetarDadosContapf(PessoaFisica pessoaf)
         {
             Console.WriteLine("Informe o nome do Titular da Conta:");
             String Titular = Console.ReadLine();
+            Console.WriteLine("Informe o numero da Conta:");
+            long conta = long.Parse(Console.ReadLine());
             Console.WriteLine("Informe uma senha para a Conta:");
             String Senha = Console.ReadLine();
             Console.WriteLine("Informe o tipo de conta:");
@@ -91,7 +93,24 @@ namespace PBancoMorangao
             Console.WriteLine("informe o valor saldo atual da conta:");
             float saldo = float.Parse(Console.ReadLine());
 
-            return new ContaCorrente(Titular, Senha, TipoConta, limite, saldo, pessoaf);
+            return new ContaCorrente(Titular,conta, Senha, TipoConta, limite, saldo, pessoaf);
+        }
+        static ContaCorrente ColetarDadosContapj(PessoaJuridica pessoaj)
+        {
+            Console.WriteLine("Informe o nome do Titular da Conta:");
+            String Titular = Console.ReadLine();
+            Console.WriteLine("Informe o numero da Conta:");
+            long conta = long.Parse(Console.ReadLine());
+            Console.WriteLine("Informe uma senha para a Conta:");
+            String Senha = Console.ReadLine();
+            Console.WriteLine("Informe o tipo de conta:");
+            String TipoConta = Console.ReadLine();
+            Console.WriteLine("informe o valor de Cheque Especial desejado para a conta:");
+            float limite = float.Parse(Console.ReadLine());
+            Console.WriteLine("informe o valor saldo atual da conta:");
+            float saldo = float.Parse(Console.ReadLine());
+
+            return new ContaCorrente(Titular, conta, Senha, TipoConta, limite, saldo, pessoaj);
         }
         static void MenuIncial()
         {
@@ -104,28 +123,49 @@ namespace PBancoMorangao
             {
 
                 Console.Clear();
-                Console.WriteLine("----------------------------- MENU INICIAL ------------------------");
-                Console.WriteLine("|                                                                 |");
-                Console.WriteLine("|          - Bem vindo ao banco Morangão  -                       |");
-                Console.WriteLine("|           Digite a opcão desejada:                              |");
-                Console.WriteLine("|           1 - Desejo me tornar Cliente                          |");
-                Console.WriteLine("|           2 - Sou Cliente                                       |");
-                Console.WriteLine("|           3 - Sou funcionario                                   |");
-                Console.WriteLine("|           0 - Para sair                                         |");
-                Console.WriteLine("|                                                                 |");
-                Console.WriteLine("-------------------------------------------------------------------");
+                Console.WriteLine(@" 
+                                 _______    ______   __    __   ______    ______         __       __   ______   _______    ______   __    __   ______    ______    ______  
+                                /       \  /      \ /  \  /  | /      \  /      \       /  \     /  | /      \ /       \  /      \ /  \  /  | /      \  /      \  /      \ 
+                                $$$$$$$  |/$$$$$$  |$$  \ $$ |/$$$$$$  |/$$$$$$  |      $$  \   /$$ |/$$$$$$  |$$$$$$$  |/$$$$$$  |$$  \ $$ |/$$$$$$  |/$$$$$$  |/$$$$$$  |
+                                $$ |__$$ |$$ |__$$ |$$$  \$$ |$$ |  $$/ $$ |  $$ |      $$$  \ /$$$ |$$ |  $$ |$$ |__$$ |$$ |__$$ |$$$  \$$ |$$ | _$$/ $$ |__$$ |$$ |  $$ |
+                                $$    $$< $$    $$ |$$$$  $$ |$$ |      $$ |  $$ |      $$$$  /$$$$ |$$ |  $$ |$$    $$< $$    $$ |$$$$  $$ |$$ |/    |$$    $$ |$$ |  $$ |
+                                $$$$$$$  |$$$$$$$$ |$$ $$ $$ |$$ |   __ $$ |  $$ |      $$ $$ $$/$$ |$$ |  $$ |$$$$$$$  |$$$$$$$$ |$$ $$ $$ |$$ |$$$$ |$$$$$$$$ |$$ |  $$ |
+                                $$ |__$$ |$$ |  $$ |$$ |$$$$ |$$ \__/  |$$ \__$$ |      $$ |$$$/ $$ |$$ \__$$ |$$ |  $$ |$$ |  $$ |$$ |$$$$ |$$ \__$$ |$$ |  $$ |$$ \__$$ |
+                                $$    $$/ $$ |  $$ |$$ | $$$ |$$    $$/ $$    $$/       $$ | $/  $$ |$$    $$/ $$ |  $$ |$$ |  $$ |$$ | $$$ |$$    $$/ $$ |  $$ |$$    $$/ 
+                                $$$$$$$/  $$/   $$/ $$/   $$/  $$$$$$/   $$$$$$/        $$/      $$/  $$$$$$/  $$/   $$/ $$/   $$/ $$/   $$/  $$$$$$/  $$/   $$/  $$$$$$/  
+                                                                                                                                           
+                                                                                                                                           
+                                                                                                                                      ");
+                Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$              -  Bem vindo ao banco Morangão  -                  $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$                   Digite a opcão desejada:                      $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$           1 - Desejo me tornar Cliente                          $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$           2 - Sou Cliente                                       $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$           3 - Sou funcionario                                   $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$           0 - Para sair                                         $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                Console.WriteLine("\t\t\t\t\t\t\t\t___________________________________________________________________");
+                Console.SetCursorPosition(60, 50);
                 opc = int.Parse(Console.ReadLine());
 
                 switch (opc)
                 {
                     case 1: // rodando perfeitamenteeee 
                         Console.Clear();
-                        Console.WriteLine("\nEstamos felizes em saber que deseja se tornar membro de nossa Familia! ");
-                        Console.WriteLine("\nPorém antes de mais nada, necessitamos de alguns dados basicos.");
-                        Console.WriteLine("\nPrimeiramente precisamos saber se você deseja criar uma conta PF ou PJ.");
-                        Console.WriteLine("\nSelecione a Opção desejada:");
-                        Console.WriteLine(" 1 - Solicitar conta para Pessoa Física ");
-                        Console.WriteLine(" 2 - Solicitar conta para Pessoa Jurídica ");
+                        Console.WriteLine("\n\n\n\n\n");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t---------------------------------------------------------------------------------------------");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$       °Estamos felizes em saber que deseja se tornar membro de nossa Familia!             $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$       °Porém antes de mais nada, necessitamos de alguns dados basicos.                    $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$       °Primeiramente precisamos saber se você deseja criar uma conta  - PF -  ou  - PJ -  $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$                             Selecione a Opção desejada:                                   $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$                     1 - Solicitar conta para Pessoa Física                                $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$                     2 - Solicitar conta para Pessoa Jurídica                              $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t_____________________________________________________________________________________________");
+                        Console.SetCursorPosition(70, 20);
                         int opcC = int.Parse(Console.ReadLine());
                         do
                         {
@@ -212,26 +252,43 @@ namespace PBancoMorangao
                                 Console.Clear();
                                 Console.WriteLine(">>> LISTA DE PF PARA CRIAR CONTA <<<");
                                 listaPF.ForEach(i => Console.WriteLine(i.ImprimirPessoaFisica()));
+                                // ------------------------------------------ imprimi todos pf pendenetes
                                 Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
                                 Console.ReadKey();
-                                Console.Clear();
-                                Console.WriteLine("\n\n\n\n\t\t\t -------------- CRIAÇÃO DAS CONTAS PENDENTES!  ------------------  ");
+                              
 
-                                //ContaCorrente conta = ColetarDadosConta();
+                                foreach (PessoaFisica pessoaFisica in listaPF)
+                                {
+                                    Console.WriteLine("\n\n\n\n\t\t\t -------------- CRIE A CONTA E VINCULE AO CLINETE!  ------------------  ");
+                                    ContaCorrente conta = ColetarDadosContapf(pessoaFisica);
+                                    Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
+                                    listaCorrente.Add(conta);
+                                }
 
-
-
-
-
-
-
-
+                                listaCorrente.ForEach(i => Console.WriteLine(i.ImprimirContaCorrente()));
+                                Console.WriteLine("\n\n\n\n\t\t\t -------------- Ta dando certo!  ------------------  ");
+                                Console.ReadKey();
 
 
                                 Console.WriteLine(">>> LISTA DE PJ PARA CRIAR CONTA <<<");
                                 listaJuridica.ForEach(i => Console.WriteLine(i.ImprimirPessoaJuridica()));
-                                //ContaCorrente conta = ColetarDadosConta();
-                                //conta.setPessoaFisica();
+
+                                // ------------------------------------------ imprimi todos pj pendenetes
+                                Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
+                                Console.ReadKey();
+
+                                foreach (PessoaJuridica pessoaJuridica in listaJuridica)
+                                {
+                                    Console.WriteLine("\n\n\n\n\t\t\t -------------- CRIE A CONTA E VINCULE AO CLINETE!  ------------------  ");
+                                    ContaCorrente conta = ColetarDadosContapj(pessoaJuridica);
+                                    Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
+                                    listaCorrente.Add(conta);
+                                }
+
+                                listaCorrente.ForEach(i => Console.WriteLine(i.ImprimirContaCorrente()));
+                                Console.WriteLine("\n\n\n\n\t\t\t -------------- Ta dando certo!  ------------------  ");
+                                Console.ReadKey();
+
                                 Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
                                 Console.ReadKey();
                             }
