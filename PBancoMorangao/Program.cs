@@ -227,7 +227,10 @@ namespace PBancoMorangao
                         } while (opcC != 1 && opcC != 2);
                         break;
                     case 2:
-                        Console.WriteLine("Terminar essa função ainda PAI. bora la negao");
+                        Console.WriteLine("\n\n\n\n\t\t\t -------------- imprimindo lista  de conta  ------------------  ");
+                        listaCorrente.ForEach(i => Console.WriteLine(i.ImprimirContaCorrente()));
+                        Console.ReadKey();
+                        Console.WriteLine("\t\t\t\t\t ----------------------------  verificando as listas de pf e pj --------------  ");
                         break;
                     case 3:
                         Console.Clear();
@@ -263,13 +266,9 @@ namespace PBancoMorangao
                                     ContaCorrente conta = ColetarDadosContapf(pessoaFisica);
                                     Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
                                     listaCorrente.Add(conta);
+                                    
                                 }
-
-                                listaCorrente.ForEach(i => Console.WriteLine(i.ImprimirContaCorrente()));
-                                Console.WriteLine("\n\n\n\n\t\t\t -------------- Ta dando certo!  ------------------  ");
-                                Console.ReadKey();
-
-
+                                
                                 Console.WriteLine(">>> LISTA DE PJ PARA CRIAR CONTA <<<");
                                 listaJuridica.ForEach(i => Console.WriteLine(i.ImprimirPessoaJuridica()));
 
@@ -283,12 +282,8 @@ namespace PBancoMorangao
                                     ContaCorrente conta = ColetarDadosContapj(pessoaJuridica);
                                     Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
                                     listaCorrente.Add(conta);
-                                }
-
-                                listaCorrente.ForEach(i => Console.WriteLine(i.ImprimirContaCorrente()));
-                                Console.WriteLine("\n\n\n\n\t\t\t -------------- Ta dando certo!  ------------------  ");
-                                Console.ReadKey();
-
+                                      
+                                }                        
                                 Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
                                 Console.ReadKey();
                             }

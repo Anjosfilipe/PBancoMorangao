@@ -106,7 +106,7 @@ namespace PBancoMorangao
 
         public String ImprimirContaCorrente()
         {
-            return  "\nTipo da conta: " + this.TipoConta + "\nNumero da conta: " + this.NumeroConta + "\nSenha: "+this.Senha +"\nCliente: " + this.PessoaFisica;
+            return  "\nTipo da conta: " + this.TipoConta + "\nNumero da conta: " + this.NumeroConta + "\nSenha: "+this.Senha +"\nCliente: " + this.PessoaFisica.ImprimirPessoaFisica();
         }
 
     }
