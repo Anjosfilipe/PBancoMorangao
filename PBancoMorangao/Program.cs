@@ -78,7 +78,7 @@ namespace PBancoMorangao
 
         }
 
-        static ContaCorrente ColetarDadosConta()
+        static ContaCorrente ColetarDadosConta(PessoaFisica pessoaf)
         {
             Console.WriteLine("Informe o nome do Titular da Conta:");
             String Titular = Console.ReadLine();
@@ -91,14 +91,14 @@ namespace PBancoMorangao
             Console.WriteLine("informe o valor saldo atual da conta:");
             float saldo = float.Parse(Console.ReadLine());
 
-            return new ContaCorrente(Titular, Senha, TipoConta, limite, saldo);
+            return new ContaCorrente(Titular, Senha, TipoConta, limite, saldo, pessoaf);
         }
         static void MenuIncial()
         {
             int opc;
             List<PessoaFisica> listaPF = new List<PessoaFisica>();
             List<PessoaJuridica> listaJuridica = new List<PessoaJuridica>();
-            //List<ContaCorrente> listaCorrente = new List<ContaCorrente>();
+            List<ContaCorrente> listaCorrente = new List<ContaCorrente>();
 
             do
             {
@@ -118,7 +118,7 @@ namespace PBancoMorangao
 
                 switch (opc)
                 {
-                    case 1:
+                    case 1: // rodando perfeitamenteeee 
                         Console.Clear();
                         Console.WriteLine("\nEstamos felizes em saber que deseja se tornar membro de nossa Familia! ");
                         Console.WriteLine("\nPorém antes de mais nada, necessitamos de alguns dados basicos.");
@@ -143,8 +143,9 @@ namespace PBancoMorangao
 
                                 if (solicitaAberturaC == 1)
                                 {
-                                    int solicitaTipoCF = pf.SolicitarTipoConta(); // gerente necessita ler essa variavel para comprovar a conta 
-                                    Console.WriteLine(pf.ImprimirPessoaFisica()); // visualiza o meu cliente PF cadastrado 
+                                    int tipoconta = pf.SolicitarTipoConta();
+                                    pf.setTipoConta(tipoconta);
+                                    Console.WriteLine(pf.ImprimirPessoaFisica());
                                     Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
                                     Console.ReadKey();
 
@@ -165,9 +166,13 @@ namespace PBancoMorangao
                                 int solicitaAberturaCJ = pj.AbrirConta();
                                 Console.Clear();
                                 Console.WriteLine("\t\t\t -------------- Proposta realizada com SUCESSO!  ------------------  ");
+                                Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
+                                Console.ReadKey();
+
                                 if (solicitaAberturaCJ == 1)
                                 {
                                     int solicitaTipoCJ = pj.SolicitarTipoConta(); // gerente necessita ler essa variavel para comprovar a conta 
+                                    pj.setTipoConta(solicitaTipoCJ);
                                     Console.WriteLine(pj.ImprimirPessoaJuridica()); // visualiza o meu cliente PJ cadastrado 
                                     Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
                                     Console.ReadKey();
@@ -180,80 +185,63 @@ namespace PBancoMorangao
                                 }
                             }
                         } while (opcC != 1 && opcC != 2);
-
                         break;
                     case 2:
                         Console.WriteLine("Terminar essa função ainda PAI. bora la negao");
                         break;
-
                     case 3:
-
                         Console.Clear();
                         Console.WriteLine("Bem vindo de volta!");
                         Console.WriteLine("Digite a Opção que desejada: ");
-                        Console.WriteLine("1 - Cadastrar novo Gerente ");
-                        Console.WriteLine("2 - Acessar o painel de Gerente ");
-                        Console.WriteLine("3 - Voltar ao Menu INICIAL");
+                        Console.WriteLine("1 - Acessar o painel de Gerente ");
+                        Console.WriteLine("2 - Voltar ao Menu INICIAL");
                         int opcF = int.Parse(Console.ReadLine());
 
                         if (opcF == 1)
                         {
                             Console.Clear();
-                            Funcionario funcionario = ColetarDadosFuncionario();
-                            Console.Clear();
-                            Console.WriteLine("Cadastro Realizado com SUCESSO!");
-                            Console.WriteLine("Estamos felizes em saber que temos mais um membro em nossa Familia! ");
-                            Console.WriteLine(funcionario.ToString()); // visualiza meu gerente cadastrado 
-                            Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
-                            Console.ReadKey();
+                            Console.WriteLine("Bem vindo ao painel do GERENTE");
+                            Console.WriteLine("\nDigite a Opção que desejada: ");
+                            Console.WriteLine("1 - Criar nova Conta ");
+                            Console.WriteLine("2 - Altorizar Emprestimo");
+                            Console.WriteLine("3 - Voltar ao Menu INICIAL");
+                            int opcG = int.Parse(Console.ReadLine());
 
-                        }
-                        else
-                        {
-                            if (opcF == 2)
+                            if (opcG == 1)
                             {
                                 Console.Clear();
-                                Console.WriteLine("Bem vindo ao painel do GERENTE");
-                                Console.WriteLine("\nDigite a Opção que desejada: ");
-                                Console.WriteLine("1 - Criar nova Conta ");
-                                Console.WriteLine("2 - Altorizar Emprestimo");
-                                Console.WriteLine("3 - Voltar ao Menu INICIAL");
-                                int opcG = int.Parse(Console.ReadLine());
+                                Console.WriteLine(">>> LISTA DE PF PARA CRIAR CONTA <<<");
+                                listaPF.ForEach(i => Console.WriteLine(i.ImprimirPessoaFisica()));
+                                Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
+                                Console.ReadKey();
+                                Console.Clear();
+                                Console.WriteLine("\n\n\n\n\t\t\t -------------- CRIAÇÃO DAS CONTAS PENDENTES!  ------------------  ");
 
-                                if (opcG == 1)
-                                {
-                                    Console.Clear();
-                                    Console.WriteLine(">>> LISTA DE PF PARA CRIAR CONTA <<<");
-                                    listaPF.ForEach(i => Console.WriteLine(i.ImprimirPessoaFisica()));
-                                    Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
-                                    Console.ReadKey();
-                                    Console.Clear();
-                                    Console.WriteLine(">>> LISTA DE PJ PARA CRIAR CONTA <<<");
-                                    listaJuridica.ForEach(i => Console.WriteLine(i.ImprimirPessoaJuridica()));
-                                    //ContaCorrente conta = ColetarDadosConta();
-                                    //conta.setPessoaFisica();
-                                    Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
-                                    Console.ReadKey();
+                                //ContaCorrente conta = ColetarDadosConta();
 
 
-                                }
-                                else if (opcG == 2)
-                                {
-                                    Console.WriteLine(" Não fez ainda pai bora a neh!!!!  ");
-                                    Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
-                                    Console.ReadKey();
 
-                                }
-                                else
-                                {
-                                    Console.ReadKey();
 
-                                }
 
+
+
+
+
+
+                                Console.WriteLine(">>> LISTA DE PJ PARA CRIAR CONTA <<<");
+                                listaJuridica.ForEach(i => Console.WriteLine(i.ImprimirPessoaJuridica()));
+                                //ContaCorrente conta = ColetarDadosConta();
+                                //conta.setPessoaFisica();
+                                Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
+                                Console.ReadKey();
                             }
-
+                            else if (opcG == 2)
+                            {
+                                Console.WriteLine(" Não fez ainda pai bora a neh!!!!  ");
+                                Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
+                                Console.ReadKey();
+                            }
                         }
-
                         break;
                 }
             } while (opc != 0);

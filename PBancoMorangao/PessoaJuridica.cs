@@ -9,6 +9,7 @@ namespace PBancoMorangao
     internal class PessoaJuridica : Pessoa
     {
         String Cnpj, RazaoSocial, NomeFantasia;
+        int TipoConta;
 
         public PessoaJuridica(string cnpj, string razaoSocial, string nomeFantasia, float salario, string Nome, string Telefone, Endereco endereco) : base( Nome, Telefone, salario, endereco)
         {
@@ -29,6 +30,11 @@ namespace PBancoMorangao
         public void setNomeFantasia(string nomeFantasia)
         {
             this.NomeFantasia = nomeFantasia;
+        }
+
+        public void setTipoConta(int tipoConta)
+        {
+            this.TipoConta = tipoConta;
         }
         public int AbrirConta()
         {
@@ -56,7 +62,7 @@ namespace PBancoMorangao
 
         public string ImprimirPessoaJuridica()
         {
-            return base.ImprimirPessoa() + "\nCnpj: " + Cnpj + "\nRazão Social: " + RazaoSocial + "\nNome fantasia: " + NomeFantasia;
+            return base.ImprimirPessoa() + "\nCnpj: " + Cnpj + "\nRazão Social: " + RazaoSocial + "\nNome fantasia: " + NomeFantasia + "Tipo de Conta: " + TipoConta;
         }
 
     }

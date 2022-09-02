@@ -10,6 +10,7 @@ namespace PBancoMorangao
     {
         String Cpf, Sexo;
         DateTime DataNascimento;
+        int TipoConta;
 
 
         public PessoaFisica(string sexo, string cpf, DateTime dataNascimento, string Nome, string Telefone,float salario, Endereco endereco) : base(Nome, Telefone,salario, endereco)
@@ -31,6 +32,11 @@ namespace PBancoMorangao
         public void setDataNascimento(DateTime datanascimento)
         {
             this.DataNascimento = datanascimento;
+        }
+
+        public void setTipoConta(int tipoConta)
+        {
+            this.TipoConta = tipoConta;
         }
         public int AbrirConta()
         {
@@ -58,7 +64,7 @@ namespace PBancoMorangao
         }
         public string ImprimirPessoaFisica()
         {
-            return base.ImprimirPessoa() + "\nCpf: " + Cpf + "\nData Nascimento: " + DataNascimento + "\nSexo: " + Sexo;
+            return base.ImprimirPessoa() + "\nCpf: " + Cpf + "\nData Nascimento: " + DataNascimento + "\nSexo: " + Sexo+"Tipo de Conta: "+TipoConta;
         }
 
 
