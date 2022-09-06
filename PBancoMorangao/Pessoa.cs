@@ -10,15 +10,14 @@ namespace PBancoMorangao
     {
         String Nome, Telefone;
         Endereco Endereco;
-        int IdCliente;
         float Salario;
         ContaCorrente Conta;
 
-        public Pessoa(string Nome, string Telefone,float salario, Endereco endereco)
+        public Pessoa(string Nome, string Telefone, float salario, Endereco endereco)
         {
             this.Nome = Nome;
             this.Telefone = Telefone;
-            this.Endereco = endereco;
+            this.Endereco = new Endereco(endereco.Cep, endereco.Logradouro, endereco.Cidade, endereco.Cidade, endereco.Estado, endereco.Bairro);
             this.Salario = salario;
 
         }
@@ -78,7 +77,7 @@ namespace PBancoMorangao
 
         public string ImprimirPessoa()
         {
-            return "\nNome: " + Nome + "\nTelefone: " + Telefone + Endereco + "\nID: " + IdCliente + "\nRenda: " + Salario + "\nTipo de conta: " + Conta;
+            return "\nNome: " + Nome + "\nTelefone: " + Telefone + Endereco.ToString() + "\nRenda: " + Salario + "\nTipo de conta: " + Conta;
         }
 
 

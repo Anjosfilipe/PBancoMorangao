@@ -8,7 +8,7 @@ namespace PBancoMorangao
 {
     internal class Endereco
     {
-        String Cep, Logradouro, Numero, Cidade, Estado, Bairro;
+       public String Cep, Logradouro, Numero, Cidade, Estado, Bairro;
 
 
         public Endereco(string cep, string logradouro, string numero, string cidade, string estado, string bairro)
@@ -45,6 +45,19 @@ namespace PBancoMorangao
         {
             this.Bairro = bairro;
         }
+
+        public Endereco setEnderecoCompleto(Endereco endereco)
+        {
+            this.Logradouro = endereco.Logradouro;
+            this.Cep = endereco.Cep;
+            this.Numero = endereco.Numero;
+            this.Cidade = endereco.Cidade;
+            this.Estado = endereco.Estado;
+            this.Bairro = endereco.Bairro;
+
+            return this;
+        
+    }
 
         public override string ToString()
         {

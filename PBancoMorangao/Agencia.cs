@@ -11,8 +11,7 @@ namespace PBancoMorangao
         int IdAgencia;
         String Nome;
         Endereco Endereco;
-        Funcionario funcionario;
-        Pessoa Pessoa;
+        
 
         public Agencia(string nome, Endereco endereco)
         {

@@ -8,9 +8,11 @@ namespace PBancoMorangao
 {
     internal class PessoaFisica : Pessoa
     {
+
         String Cpf, Sexo;
         DateTime DataNascimento;
         int TipoConta;
+      
 
 
         public PessoaFisica(string sexo, string cpf, DateTime dataNascimento, string Nome, string Telefone,float salario, Endereco endereco) : base(Nome, Telefone,salario, endereco)
@@ -38,12 +40,16 @@ namespace PBancoMorangao
         {
             this.TipoConta = tipoConta;
         }
+
+        
+
+
         public int AbrirConta()
         {
             Console.Clear();
             Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
-            Console.WriteLine("\t\t\t\t\t\t\t\t$                     Olá " + getNome() +"                                  $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                     Olá " + getNome());
             Console.WriteLine("\t\t\t\t\t\t\t\t$           Deseja  realmente abrir uma conta em nosso banco ?    $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                 Digite -- 1 -- para SIM                         $");
@@ -58,12 +64,16 @@ namespace PBancoMorangao
         public int SolicitarTipoConta()
         {
             Console.Clear();
-            Console.WriteLine("Para você: " + getNome());
-            Console.WriteLine("Temos 3 modelos de contas em nosso banco: ");
-            Console.WriteLine("Digite 1 - UNIVERSITARIA ");
-            Console.WriteLine("Digite 2 - COMUM ");
-            Console.WriteLine("Digite 3 - VIP ");
-            Console.WriteLine("Digite a forma de conta desejada: 'Lembrando que estará sobre a analise de um de nossos Gerentes para APROVAÇÃO'");
+            Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$               Para você: " + getNome());
+            Console.WriteLine("\t\t\t\t\t\t\t\t$          - Temos 3 modelos de contas em nosso banco: -          $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$            Digite 1 - UNIVERSITARIA                             $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$            Digite 2 - COMUM                                     $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$            Digite 3 - VIP                                       $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+            Console.WriteLine("\t\t\t\t\tDigite a forma de conta desejada: 'Lembrando que estará sobre a analise de um de nossos Gerentes para APROVAÇÃO'");
             int opc = int.Parse(Console.ReadLine());
 
             return opc;

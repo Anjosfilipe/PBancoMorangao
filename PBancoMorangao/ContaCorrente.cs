@@ -17,27 +17,33 @@ namespace PBancoMorangao
         PessoaFisica PessoaFisica;
         PessoaJuridica PessoaJuridica;
 
-        public ContaCorrente(String titular,long NumeroConta, String Senha, String TipoConta, float limite, float Saldo, PessoaFisica pessoaf)
+
+
+        public ContaCorrente(String titular, long NumeroConta, String Senha, String TipoConta, float limite, float Saldo, PessoaFisica pessoaf)
         {
 
             this.Titular = titular;
+            this.NumeroConta = NumeroConta;
             this.Senha = Senha;
             this.TipoConta = TipoConta;
             this.Limite = limite;
             this.Saldo = Saldo;
             this.PessoaFisica = pessoaf;
-            
+            this.IdConta  = this.IdConta++;
+
 
         }
         public ContaCorrente(String titular, long NumeroConta, String Senha, String TipoConta, float limite, float Saldo, PessoaJuridica pessoaj)
         {
 
             this.Titular = titular;
+            this.NumeroConta = NumeroConta;
             this.Senha = Senha;
             this.TipoConta = TipoConta;
             this.Limite = limite;
             this.Saldo = Saldo;
             this.PessoaJuridica = pessoaj;
+            this.IdConta = this.IdConta++;
 
 
         }
@@ -54,9 +60,10 @@ namespace PBancoMorangao
 
         }
 
-        public void setIdConta(Random rand)
+        public void setIdConta(int Idconta)
         {
-            this.IdConta = rand.Next(0, 100);
+
+            this.IdConta = Idconta;
 
         }
 
@@ -91,7 +98,7 @@ namespace PBancoMorangao
 
         public void setCliente(Pessoa pessoa)
         {
-            this.Pessoa= pessoa;
+            this.Pessoa = pessoa;
         }
 
         public void setPessoaFisica(PessoaFisica pessoaf)
@@ -104,10 +111,22 @@ namespace PBancoMorangao
             this.NumeroConta = NumeroConta;
         }
 
-        public String ImprimirContaCorrente()
+        public PessoaFisica getPessoaFisica()
         {
-            return  "\nTipo da conta: " + this.TipoConta + "\nNumero da conta: " + this.NumeroConta + "\nSenha: "+this.Senha +"\nCliente: " + this.PessoaFisica.ImprimirPessoaFisica();
+            return this.PessoaFisica;
         }
+
+        public PessoaJuridica getPessoaJuridica()
+        {
+            return this.PessoaJuridica;
+        }
+
+
+        public string imprimirContaCorrente()
+        {
+            return "\nID: " + IdConta + "\nTitular: " + Titular + "\nNumero da conta: " + this.NumeroConta + "\nSenha: " + Senha + "\nSaldo: " + Saldo + "\nLimite: " + Limite + "\nTipo da conta: " + TipoConta;
+        }
+
 
     }
 }
