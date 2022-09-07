@@ -8,8 +8,8 @@ namespace PBancoMorangao
 {
     internal class ContaCorrente
     {
-        int IdConta;
-        String Titular, Senha, TipoConta;
+        int IdConta, Senha;
+        String Titular, TipoConta;
         float Limite, Saldo;
         Agencia Agencia;
         Pessoa Pessoa;
@@ -19,7 +19,7 @@ namespace PBancoMorangao
 
 
 
-        public ContaCorrente(String titular, long NumeroConta, String Senha, String TipoConta, float limite, float Saldo, PessoaFisica pessoaf)
+        public ContaCorrente(String titular, long NumeroConta, int Senha, String TipoConta, float limite, float Saldo, PessoaFisica pessoaf)
         {
 
             this.Titular = titular;
@@ -29,11 +29,9 @@ namespace PBancoMorangao
             this.Limite = limite;
             this.Saldo = Saldo;
             this.PessoaFisica = pessoaf;
-            this.IdConta  = this.IdConta++;
-
 
         }
-        public ContaCorrente(String titular, long NumeroConta, String Senha, String TipoConta, float limite, float Saldo, PessoaJuridica pessoaj)
+        public ContaCorrente(String titular, long NumeroConta, int Senha, String TipoConta, float limite, float Saldo, PessoaJuridica pessoaj)
         {
 
             this.Titular = titular;
@@ -43,12 +41,10 @@ namespace PBancoMorangao
             this.Limite = limite;
             this.Saldo = Saldo;
             this.PessoaJuridica = pessoaj;
-            this.IdConta = this.IdConta++;
 
 
         }
-
-        public ContaCorrente(String titular, long NumeroConta, String Senha, String TipoConta, float limite, float Saldo)
+        public ContaCorrente(String titular, long NumeroConta, int Senha, String TipoConta, float limite, float Saldo)
         {
 
             this.Titular = titular;
@@ -59,20 +55,17 @@ namespace PBancoMorangao
 
 
         }
-
         public void setIdConta(int Idconta)
         {
 
             this.IdConta = Idconta;
 
         }
-
         public void setTitular(string titular)
         {
             this.Titular = titular;
         }
-
-        public void setSenha(string senha)
+        public void setSenha(int senha)
         {
             this.Senha = senha;
         }
@@ -80,53 +73,156 @@ namespace PBancoMorangao
         {
             this.TipoConta = tipoConta;
         }
-
         public void setLimite(float Limite)
         {
             this.Limite = Limite;
         }
-
         public void setSaldo(float Saldo)
         {
             this.Saldo = Saldo;
         }
-
         public void setAgencia(Agencia agencia)
         {
             this.Agencia = agencia;
         }
-
         public void setCliente(Pessoa pessoa)
         {
             this.Pessoa = pessoa;
         }
-
         public void setPessoaFisica(PessoaFisica pessoaf)
         {
             this.PessoaFisica = pessoaf;
         }
-
         public void setNumeroConta(long NumeroConta)
         {
             this.NumeroConta = NumeroConta;
         }
-
         public PessoaFisica getPessoaFisica()
         {
             return this.PessoaFisica;
         }
-
         public PessoaJuridica getPessoaJuridica()
         {
             return this.PessoaJuridica;
         }
+        public int getSenha()
+        {
+            return this.Senha;
+        }
+        public long getConta()
+        {
+            return this.NumeroConta;
+        }
+        public float getLimite()
+        {
+            return this.Limite;
+        }
+        public float getSaldo()
+        {
+            return this.Saldo;
+        }
+        public string getTitular()
+        {
+            return this.Titular;
+        }
+        public long getNumeroConta()
+        {
+            return this.NumeroConta;
+        }
+        public float Saque(float valor)
+        {
+            float saldoAT = 0;
 
+            if ((getSaldo() + getLimite()) < valor)
+            {
+                Console.WriteLine("Saldo insuficiente");
+                Console.ReadKey();
+            }
+            else
+            {
+                if (getSaldo() > valor)
+                {
+                    saldoAT = (getSaldo() - valor);
+                    setSaldo(saldoAT);
+
+                }
+                else
+                {
+                    saldoAT = (getLimite() - (valor - getSaldo()));
+                    setLimite(saldoAT);
+                    setSaldo(0);
+
+                }
+
+                Console.WriteLine("Saldo atual: " + (getSaldo() + getLimite()));
+            }
+            return saldoAT;
+        }
+
+        public float Deposito(float valor)
+        {
+            float deposito = (getSaldo() + valor);
+
+            setSaldo(deposito);
+            Console.WriteLine("Deposito realizado com sucesso");
+            Console.WriteLine("Saldo atual: " + (getSaldo() + getLimite()));
+            Console.ReadKey();
+            return deposito;
+        }
+
+        public void ConsultaSaldo()
+        {
+            Console.WriteLine("\nSaldo atual: " + (getSaldo() + getLimite()));
+        }
+
+        public void PagarConta(float valor)
+        {
+            Saque(valor);
+
+        }
+
+        public void Tranferir(float valor, List<ContaCorrente> listaCorrente)
+        {
+            Console.WriteLine("Digite a conta para a transferencia: ");
+            int cc = int.Parse(Console.ReadLine());
+            Console.WriteLine("Digite o valor da tansação");
+            int vc = int.Parse(Console.ReadLine());
+            foreach (ContaCorrente i in listaCorrente)
+            {
+                if (cc == i.getConta())
+                {
+                    i.Deposito(vc);
+                }
+                else
+                {
+                    Console.WriteLine(" Conta informa não existe ");
+                }
+
+            }
+            Saque(vc);
+        }
+
+        public String SolicitarEmprestimo()
+        {
+            Console.WriteLine("Digite o valor que deseja de emprestimo: ");
+            float valorEmprestimo = float.Parse(Console.ReadLine());
+            Console.WriteLine("Digite a quantidade de parcelas desejadas: ");
+            int parcelas = int.Parse(Console.ReadLine());
+            Console.WriteLine("Digite a data de vencimento: ");
+            string dataVencimento = Console.ReadLine();
+
+            
+            Console.WriteLine("\nProposta realizada com sucesso!");
+            Console.WriteLine("\nAguarde a aprovação do gerente!");
+            Console.ReadKey();
+
+            return "\nTitular: " + getTitular() + "\nNumero da conta: " + getNumeroConta() + "\nValor desejado: " + valorEmprestimo + "\nNumero de parcelas: " + parcelas + "\nData de vencimento: " + dataVencimento;
+
+        }
 
         public string imprimirContaCorrente()
         {
             return "\nID: " + IdConta + "\nTitular: " + Titular + "\nNumero da conta: " + this.NumeroConta + "\nSenha: " + Senha + "\nSaldo: " + Saldo + "\nLimite: " + Limite + "\nTipo da conta: " + TipoConta;
         }
-
-
     }
 }

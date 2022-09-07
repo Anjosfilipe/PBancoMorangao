@@ -8,6 +8,7 @@ namespace PBancoMorangao
 {
     internal class Pessoa
     {
+        protected int IdCliente;
         String Nome, Telefone;
         Endereco Endereco;
         float Salario;
@@ -21,6 +22,11 @@ namespace PBancoMorangao
             this.Salario = salario;
 
         }
+
+        //public Pessoa(int IdCliente)
+        //{
+        //    this.IdCliente = IdCliente;
+        //}
 
         public void setSalario(float salario)
         {
@@ -52,17 +58,9 @@ namespace PBancoMorangao
             return this.Nome;
         }
 
-        public String SolicitarEmprestimo()
-        {
-            Console.WriteLine("Digite o valor que deseja de emprestimo: ");
-            float valorEmprestimo = float.Parse(Console.ReadLine());
-            Console.WriteLine("Digite a quantidade de parcelas desejadas: ");
-            int parcelas = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite a data de vencimento: ");
-            string dataVencimento = Console.ReadLine();
 
-            return "\nValor desejado: " + valorEmprestimo + "\nNumero de parcelas: " + parcelas + "\nData de vencimento: " + dataVencimento;
-        }
+
+        
 
         //public String SolicitarFechamentoConta()
         //{

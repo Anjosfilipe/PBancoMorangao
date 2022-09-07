@@ -21,5 +21,10 @@ namespace PBancoMorangao
 
         }
 
+
+        public override string ToString()
+        {
+            return "IdAgencia: "+IdAgencia+"\nNome da Agencia: " + Nome + "\nEndereço: " + Endereco;
+        }
     }
 }

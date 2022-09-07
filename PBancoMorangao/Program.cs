@@ -40,6 +40,7 @@ namespace PBancoMorangao
             Console.Write("\n\t\t\t\t\t\t\tDigite seu Sexo: ");
             String sexo = Console.ReadLine();
 
+
             return new PessoaFisica(sexo, Cpf, datanascimento, nome, Telefone, salario, endereco);
         }
         static PessoaJuridica ColetarDadosPJ()
@@ -79,7 +80,7 @@ namespace PBancoMorangao
         }
         static Agencia ColetarDadosAgencia()
         {
-            Console.WriteLine("Nome da Agencia: ");
+            Console.Write("\n\t\t\t\t\t\t\tNome da Agencia: ");
             string nome = Console.ReadLine();
             Endereco endereco = ColetaDadosEndereco();
 
@@ -94,7 +95,7 @@ namespace PBancoMorangao
             Console.Write("\nInforme o numero da Conta: ");
             long conta = long.Parse(Console.ReadLine());
             Console.Write("\nInforme uma senha para a Conta: ");
-            String Senha = Console.ReadLine();
+            int Senha = int.Parse(Console.ReadLine());
             Console.Write("\nInforme o tipo de conta: ");
             String TipoConta = Console.ReadLine();
             Console.Write("\ninforme o valor de Cheque Especial desejado para a conta: ");
@@ -112,7 +113,7 @@ namespace PBancoMorangao
             Console.Write("\nInforme o numero da Conta:");
             long conta = long.Parse(Console.ReadLine());
             Console.Write("\nInforme uma senha para a Conta:");
-            String Senha = Console.ReadLine();
+            int Senha = int.Parse(Console.ReadLine());
             Console.Write("\nInforme o tipo de conta:");
             String TipoConta = Console.ReadLine();
             Console.Write("\ninforme o valor de Cheque Especial desejado para a conta:");
@@ -122,7 +123,6 @@ namespace PBancoMorangao
 
             return new ContaCorrente(Titular, conta, Senha, TipoConta, limite, saldo, pessoaj);
         }
-
         static void MenuCliente()
         {
             Console.Clear();
@@ -133,11 +133,12 @@ namespace PBancoMorangao
             Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                           - Digite a Opção desejada -                                     $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                           0 -  SAIR                                                       $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                           1 -  SAQUE                                                      $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                           2 -  DEPOSITO                                                   $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                           3 -  TRANSFERENCIA                                              $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                           4 -  EXTRATO                                                    $");
-            Console.WriteLine("\t\t\t\t\t\t\t\t$                           5 -  CONSULTAR lIMITE                                           $");
+            Console.WriteLine("\t\t\t\t\t\t\t\t$                           5 -  CONSULTAR lIMITE (Cartão de credito)                       $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                           6 -  CONSULTAR SALDO                                            $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                           7 -  REALIZAR PAGAMENTOS                                        $");
             Console.WriteLine("\t\t\t\t\t\t\t\t$                           8 -  SOLICITAR EMPRESTIMO                                       $");
@@ -197,6 +198,7 @@ namespace PBancoMorangao
             List<PessoaJuridica> listaPJ = new List<PessoaJuridica>();
             List<ContaCorrente> listaCorrente = new List<ContaCorrente>();
             List<Agencia> listaAgencia = new List<Agencia>();
+            List<string> emprestimo = new List<string>();
 
             do
             {
@@ -216,7 +218,7 @@ namespace PBancoMorangao
                                 Console.Clear();
                                 PessoaFisica pf = ColetarDadosPF();
                                 listaPF.Add(pf);
-                                int solicitaAberturaC = pf.AbrirConta();// gerente necessita ler essa variavel para comprovar a conta 
+                                int solicitaAberturaC = pf.AbrirConta();
                                 Console.Clear();
                                 Console.WriteLine("\n\n\n\n\n");
                                 Console.WriteLine("\t\t\t\t\t\t\t\t---------------------------------------------------------------------------------------------");
@@ -233,7 +235,7 @@ namespace PBancoMorangao
                                     int tipoconta = pf.SolicitarTipoConta();
                                     pf.setTipoConta(tipoconta);
                                     Console.WriteLine(pf.ImprimirPessoaFisica());
-                                    Console.WriteLine("\t\t\t\t\t\t\t\t --------- Tecle ENTER para voltar ao menu inicar  --------------- ");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t --------- Tecle ENTER para voltar ao menu iniciar  --------------- ");
                                     Console.ReadKey();
 
                                 }
@@ -265,8 +267,8 @@ namespace PBancoMorangao
                                 {
                                     int solicitaTipoCJ = pj.SolicitarTipoConta();
                                     pj.setTipoConta(solicitaTipoCJ);
-                                    Console.WriteLine(pj.ImprimirPessoaJuridica()); // visualiza o meu cliente PJ cadastrado 
-                                    Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
+                                    Console.WriteLine(pj.ImprimirPessoaJuridica());
+                                    Console.WriteLine(" Tecle ENTER para voltar ao menu iniciar ");
                                     Console.ReadKey();
 
                                 }
@@ -280,41 +282,127 @@ namespace PBancoMorangao
                         break;
 
                     case 2:
-                        //MenuCliente();
-                        //int opcCL = int.Parse(Console.ReadLine());
-
-
-                        //switch (opcCL)
-                        //{
-                        //    case 1:
-                        //        break;
-                        //    case 2:
-                        //        break;
-                        //    case 3:
-                        //        break;
-                        //    case 4:
-                        //        break;
-                        //    case 5:
-                        //        break;
-                        //    case 6:
-                        //        break;
-                        //    case 7:
-                        //        break;
-                        //    case 8:
-                        //        break;
-                        //}
-
-
-
+                        if (listaCorrente.Count == 0)
+                        {
+                            Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$              - NÃO ENCONTRAMOS SUA CONTA.  -                    $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$              - FAÇA O CADASTRO DA MESMA  -                      $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$                        -  OU -                                  $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$              - INFORME NOVAMENTE OD DADOS  -                    $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+                            Console.WriteLine("\t\t\t\t\t\t\t\t --------- Tecle ENTER para voltar ao menu iniciar  --------------- ");
+                            Console.ReadKey();
+                        }
+                        else
+                        {
                         Console.Clear();
-                        Console.WriteLine("\t\t\t\t\t\t\t\t---------------------------------------------------------------------------------------------");
-                        Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
-                        Console.WriteLine("\t\t\t\t\t\t\t\t$ ----------------------------  Verificando a lista de CONTA --------------                 $");
-                        Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
-                        Console.WriteLine("\t\t\t\t\t\t\t\t---------------------------------------------------------------------------------------------");
-                        listaCorrente.ForEach(i => Console.WriteLine(i.imprimirContaCorrente()));
-                        Console.ReadKey();
+                        Console.WriteLine(@" 
+                                 _______    ______   __    __   ______    ______         __       __   ______   _______    ______   __    __   ______    ______    ______  
+                                /       \  /      \ /  \  /  | /      \  /      \       /  \     /  | /      \ /       \  /      \ /  \  /  | /      \  /      \  /      \ 
+                                $$$$$$$  |/$$$$$$  |$$  \ $$ |/$$$$$$  |/$$$$$$  |      $$  \   /$$ |/$$$$$$  |$$$$$$$  |/$$$$$$  |$$  \ $$ |/$$$$$$  |/$$$$$$  |/$$$$$$  |
+                                $$ |__$$ |$$ |__$$ |$$$  \$$ |$$ |  $$/ $$ |  $$ |      $$$  \ /$$$ |$$ |  $$ |$$ |__$$ |$$ |__$$ |$$$  \$$ |$$ | _$$/ $$ |__$$ |$$ |  $$ |
+                                $$    $$< $$    $$ |$$$$  $$ |$$ |      $$ |  $$ |      $$$$  /$$$$ |$$ |  $$ |$$    $$< $$    $$ |$$$$  $$ |$$ |/    |$$    $$ |$$ |  $$ |
+                                $$$$$$$  |$$$$$$$$ |$$ $$ $$ |$$ |   __ $$ |  $$ |      $$ $$ $$/$$ |$$ |  $$ |$$$$$$$  |$$$$$$$$ |$$ $$ $$ |$$ |$$$$ |$$$$$$$$ |$$ |  $$ |
+                                $$ |__$$ |$$ |  $$ |$$ |$$$$ |$$ \__/  |$$ \__$$ |      $$ |$$$/ $$ |$$ \__$$ |$$ |  $$ |$$ |  $$ |$$ |$$$$ |$$ \__$$ |$$ |  $$ |$$ \__$$ |
+                                $$    $$/ $$ |  $$ |$$ | $$$ |$$    $$/ $$    $$/       $$ | $/  $$ |$$    $$/ $$ |  $$ |$$ |  $$ |$$ | $$$ |$$    $$/ $$ |  $$ |$$    $$/ 
+                                $$$$$$$/  $$/   $$/ $$/   $$/  $$$$$$/   $$$$$$/        $$/      $$/  $$$$$$/  $$/   $$/ $$/   $$/ $$/   $$/  $$$$$$/  $$/   $$/  $$$$$$/  
+                                                                                                                                           
+                                                                                                                                           
+                                                                                                                                      ");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$              - DIGITE O NUMERO DA CONTA:  -                     $");
+                        long contaD = int.Parse(Console.ReadLine());
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t$              - DIGITE A SENHA:    -                             $");
+                        Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+                        int senhaD = int.Parse(Console.ReadLine());
+                            foreach (ContaCorrente i in listaCorrente)
+                            {
+                                if (contaD == i.getConta() && (senhaD == i.getSenha()))
+                                {
+                                    ContaCorrente contaI = i;
+                                    int stop = 0;
+                                    do
+                                    {
 
+                                        MenuCliente();
+                                        int opcCL = int.Parse(Console.ReadLine());
+                                        switch (opcCL)
+                                        {
+                                            case 0: stop = 1;
+                                                break;
+                                            case 1:
+                                                Console.Write("\nDigite o valor que deseja sacar: ");
+                                                float valor = float.Parse(Console.ReadLine());
+                                                contaI.Saque(valor);
+                                                Console.ReadKey();
+                                                break;
+                                            case 2:
+                                                Console.Write("\nDigite o valor que deseja Depositar: ");
+                                                float deposito = float.Parse(Console.ReadLine());
+                                                contaI.Deposito(deposito);
+                                                Console.ReadKey();
+                                                break;
+                                            case 3:
+                                                Console.Write("\nDigite o valor que deseja Transferir: ");
+                                                float transferir = float.Parse(Console.ReadLine());
+                                                contaI.Tranferir(transferir,listaCorrente);
+                                                break;
+                                            case 4:
+                                                Console.WriteLine("\t\t\t\t\t\t\t\t --------- Tecle ENTER para voltar ao menu iniciar  --------------- ");
+                                                Console.ReadKey();
+                                                break;
+                                            case 5:
+                                                Console.WriteLine("\t\t\t\t\t\t\t\t --------- Tecle ENTER para voltar ao menu iniciar  --------------- ");
+                                                Console.ReadKey();
+                                                break;
+                                            case 6:
+                                                contaI.ConsultaSaldo();
+                                                Console.ReadKey();
+                                                break;
+                                            case 7:
+                                                Console.WriteLine("\nDigite o codigo de pagamento: ");
+                                                float conta = float.Parse(Console.ReadLine());
+                                                Console.WriteLine("\nDigite o valor da Conta: ");
+                                                float valorConta = float.Parse(Console.ReadLine());
+                                                contaI.PagarConta(valorConta);
+                                                Console.ReadKey();
+                                                break;
+                                            case 8:
+                                                string solicitacao = contaI.SolicitarEmprestimo();
+                                                emprestimo.Add(solicitacao);
+                                                Console.ReadKey();
+                                                break;
+                                        }
+                                    } while (stop != 1); 
+
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$              - NÃO ENCONTRAMOS SUA CONTA.  -                    $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$              - FAÇA O CADASTRO DA MESMA  -                      $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                        -  OU -                                  $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$              - INFORME NOVAMENTE OD DADOS  -                    $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                 $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t-------------------------------------------------------------------");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t --------- Tecle ENTER para voltar ao menu iniciar  --------------- ");
+                                    Console.ReadKey();
+
+                                }
+
+                            }
+                        }
                         break;
                     case 3:
 
@@ -360,6 +448,7 @@ namespace PBancoMorangao
                                 {
                                     Console.WriteLine("\n\n\n\n\t\t\t -------------- CRIE A CONTA E VINCULE AO CLIENTE!  ------------------  ");
                                     ContaCorrente conta = ColetarDadosContapf(i);
+
                                     listaCorrente.Add(conta);
                                     Console.WriteLine("\n\n\n\n\t\t\t -------------- TECLE ENTER PARA CONTINUAR!  ------------------  ");
                                 }
@@ -389,25 +478,56 @@ namespace PBancoMorangao
                             }
                             else if (opcG == 2)
                             {
-                                Console.WriteLine(" Não fez ainda pai bora a neh!!!!  ");
-                                Console.WriteLine(" Tecle ENTER para voltar ao menu inicar ");
-                                Console.ReadKey();
-                            }
-                            else if (opcG == 3)
-                            {
-                                Agencia agencia = ColetarDadosAgencia();
-                                listaAgencia.Add(agencia);
-                                Console.ReadKey();
+                                Console.WriteLine(">>> LISTA DE EMPRESTIMOS PARA CRIAR LIBERAÇÃO <<<");
+                                emprestimo.ForEach(i => Console.WriteLine(i.ToString()));
+
+                                Console.WriteLine(" >>  Digite a opição desejada << ");
+                                Console.WriteLine(" 1 - Liberar emprestimo ");
+                                Console.WriteLine(" 2 - Recusar emprestimo ");
+                                int opcE = int.Parse(Console.ReadLine());
+
+                                if (opcE == 1)
+                                {
+                                    Console.WriteLine("Digite a conta do cliente: ");
+                                    int cc = int.Parse(Console.ReadLine());
+                                    Console.WriteLine("Digite o valor a ser liberado");
+                                    int vc = int.Parse(Console.ReadLine());
+                                    foreach (ContaCorrente i in listaCorrente)
+                                    {
+                                        if (cc == i.getConta())
+                                        {
+                                            i.Deposito(vc);
+                                        }
+                                    }
+
+                                }
+                                else if(opcE == 2)
+                                {
+                                    Console.WriteLine("Emprestimo negado.");
+                                    Console.ReadLine();
+                                    break;
+                                }
+                                else if (opcG == 3)
+                                {
+                                    Agencia agencia = ColetarDadosAgencia();
+                                    listaAgencia.Add(agencia);
+                                    Console.WriteLine("\n\n\n\n\n");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t---------------------------------------------------------------------------------------------");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$               -------------- Cadastro realizado com SUCESSO!  ------------------          $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                                                                                           $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t$                -------------- TECLE ENTER PARA CONTINUAR!  ------------------             $");
+                                    Console.WriteLine("\t\t\t\t\t\t\t\t---------------------------------------------------------------------------------------------");
+                                    listaAgencia.ForEach(i => Console.WriteLine(i.ToString()));
+                                    Console.ReadKey();
+                                }
                             }
                         }
                         break;
                 }
             } while (opc != 0);
         }
-
-
-
-
         static void Main(string[] args)
         {
             MenuIncial();

@@ -22,6 +22,11 @@ namespace PBancoMorangao
             Sexo = sexo;
         }
 
+        //public PessoaFisica(int IdClientete) : base(IdCliente)
+        //{
+
+        //}
+
         public void setCpf(string Cpf)
         {
             this.Cpf = Cpf;
