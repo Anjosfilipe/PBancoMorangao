@@ -158,7 +158,6 @@ namespace PBancoMorangao
             }
             return saldoAT;
         }
-
         public float Deposito(float valor)
         {
             float deposito = (getSaldo() + valor);
@@ -169,20 +168,18 @@ namespace PBancoMorangao
             Console.ReadKey();
             return deposito;
         }
-
         public void ConsultaSaldo()
         {
             Console.WriteLine("\nSaldo atual: " + (getSaldo() + getLimite()));
         }
-
         public void PagarConta(float valor)
         {
             Saque(valor);
 
         }
-
         public void Tranferir(float valor, List<ContaCorrente> listaCorrente)
         {
+            bool achei = false;
             Console.WriteLine("Digite a conta para a transferencia: ");
             int cc = int.Parse(Console.ReadLine());
             Console.WriteLine("Digite o valor da tansação");
@@ -192,16 +189,16 @@ namespace PBancoMorangao
                 if (cc == i.getConta())
                 {
                     i.Deposito(vc);
-                }
-                else
-                {
-                    Console.WriteLine(" Conta informa não existe ");
+                    Saque(vc);
+                    achei = true;
                 }
 
             }
-            Saque(vc);
+            if (achei == false)
+            {
+                Console.WriteLine(" Conta informa não existe ");
+            }
         }
-
         public String SolicitarEmprestimo()
         {
             Console.WriteLine("Digite o valor que deseja de emprestimo: ");
@@ -211,7 +208,7 @@ namespace PBancoMorangao
             Console.WriteLine("Digite a data de vencimento: ");
             string dataVencimento = Console.ReadLine();
 
-            
+
             Console.WriteLine("\nProposta realizada com sucesso!");
             Console.WriteLine("\nAguarde a aprovação do gerente!");
             Console.ReadKey();
@@ -219,7 +216,6 @@ namespace PBancoMorangao
             return "\nTitular: " + getTitular() + "\nNumero da conta: " + getNumeroConta() + "\nValor desejado: " + valorEmprestimo + "\nNumero de parcelas: " + parcelas + "\nData de vencimento: " + dataVencimento;
 
         }
-
         public string imprimirContaCorrente()
         {
             return "\nID: " + IdConta + "\nTitular: " + Titular + "\nNumero da conta: " + this.NumeroConta + "\nSenha: " + Senha + "\nSaldo: " + Saldo + "\nLimite: " + Limite + "\nTipo da conta: " + TipoConta;

@@ -8,7 +8,7 @@ namespace PBancoMorangao
 {
     internal class Pessoa
     {
-        protected int IdCliente;
+      
         String Nome, Telefone;
         Endereco Endereco;
         float Salario;
@@ -23,10 +23,7 @@ namespace PBancoMorangao
 
         }
 
-        //public Pessoa(int IdCliente)
-        //{
-        //    this.IdCliente = IdCliente;
-        //}
+     
 
         public void setSalario(float salario)
         {
@@ -57,21 +54,6 @@ namespace PBancoMorangao
         {
             return this.Nome;
         }
-
-
-
-        
-
-        //public String SolicitarFechamentoConta()
-        //{
-        //    Console.WriteLine("Olá " + getNome());
-        //    Console.WriteLine("Atualmente sua conta: " + getContaCorrente());
-        //    Console.WriteLine("Deseja cancelar a mesma?: SIM ou NÂO");
-
-        //    return Console.ReadLine();
-        //}
-
-
 
         public string ImprimirPessoa()
         {
